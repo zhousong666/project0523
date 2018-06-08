@@ -1,0 +1,700 @@
+###############################################################################
+#
+# IAR ELF Linker V3.10.1.2056 for RL78                    08/Jun/2018  14:00:22
+# Copyright 2011-2017 IAR Systems AB.
+#
+#    Output file  =  E:\Water meter\project0523\Debug\Exe\project01.out
+#    Map file     =  E:\Water meter\project0523\Debug\List\project01.map
+#    Command line =  
+#        -f C:\Users\69043\AppData\Local\Temp\EW2692.tmp ("E:\Water
+#        meter\project0523\Debug\Obj\LibReplacement.o" "E:\Water
+#        meter\project0523\Debug\Obj\r_cg_cgc.o" "E:\Water
+#        meter\project0523\Debug\Obj\r_cg_cgc_user.o" "E:\Water
+#        meter\project0523\Debug\Obj\r_cg_intc.o" "E:\Water
+#        meter\project0523\Debug\Obj\r_cg_intc_user.o" "E:\Water
+#        meter\project0523\Debug\Obj\r_cg_lcd.o" "E:\Water
+#        meter\project0523\Debug\Obj\r_cg_lcd_user.o" "E:\Water
+#        meter\project0523\Debug\Obj\r_cg_port.o" "E:\Water
+#        meter\project0523\Debug\Obj\r_cg_port_user.o" "E:\Water
+#        meter\project0523\Debug\Obj\r_cg_timer.o" "E:\Water
+#        meter\project0523\Debug\Obj\r_cg_timer_user.o" "E:\Water
+#        meter\project0523\Debug\Obj\r_cg_wdt.o" "E:\Water
+#        meter\project0523\Debug\Obj\r_cg_wdt_user.o" "E:\Water
+#        meter\project0523\Debug\Obj\r_main.o" "E:\Water
+#        meter\project0523\Debug\Obj\r_systeminit.o" -o "E:\Water
+#        meter\project0523\Debug\Exe\project01.out" --config_def
+#        __RESERVE_OCD_ROM=1 --config_def __RESERVE_OCD_TRACE_RAM=0
+#        --config_def __RESERVE_HOTPLUGIN_RAM=0 --map "E:\Water
+#        meter\project0523\Debug\List\project01.map" --config "C:\Program Files
+#        (x86)\IAR Systems\Embedded Workbench 8.0\rl78\config\lnkr5f10rlc.icf"
+#        --config_def _STACK_SIZE=128 --config_def _NEAR_HEAP_SIZE=256
+#        --config_def _FAR_HEAP_SIZE=4096 --config_def _HUGE_HEAP_SIZE=0
+#        --define_symbol _NEAR_CONST_LOCATION=0 --config_def
+#        _NEAR_CONST_LOCATION_START=0x2000 --config_def
+#        _NEAR_CONST_LOCATION_SIZE=0x5FFF --redirect ?I_MUL_L02=HWMUL_16_16_16
+#        --redirect ?L_MUL_L03=HWMUL_32_32_32 --redirect
+#        ?UC_DIV_L01=HWDIV_8_8_8 --redirect ?UI_DIV_L02=HWDIV_16_16_16
+#        --redirect ?UL_DIV_L03=HWDIV_32_32_32 --redirect
+#        ?UC_MOD_L01=HWMOD_8_8_8 --redirect ?UI_MOD_L02=HWMOD_16_16_16
+#        --redirect ?UL_MOD_L03=HWMOD_32_32_32 --redirect
+#        ?SC_DIV_L01=HWSDIV_8_8_8 --redirect ?SI_DIV_L02=HWSDIV_16_16_16
+#        --redirect ?SL_DIV_L03=HWSDIV_32_32_32 --redirect
+#        ?SC_MOD_L01=HWSMOD_8_8_8 --redirect ?SI_MOD_L02=HWSMOD_16_16_16
+#        --redirect ?SL_MOD_L03=HWSMOD_32_32_32 --vfe --entry
+#        __iar_program_start --debug_lib)
+#
+###############################################################################
+
+*******************************************************************************
+*** RUNTIME MODEL ATTRIBUTES
+***
+
+__SystemLibrary            = DLib
+__calling_convention       = v2
+__code_model               = near
+__core                     = s2
+__data_model               = near
+__dlib_file_descriptor     = 0
+__dlib_full_locale_support = 0
+__double_size              = 32
+__far_rt_calls             = false
+__rt_version               = 2
+
+
+*******************************************************************************
+*** PLACEMENT SUMMARY
+***
+
+"A0":  place at 0x00000 { ro section .reset };
+"A1":  place at 0x00004 { ro section .intvec };
+"A2":  place at 0x000c0 { block OPT_BYTE };
+"A3":  place at 0x000c4 { block SECUR_ID };
+"ROMNEAR":
+       place in [from 0x000d8 to 0x07fff] { R_TEXT, ro section .text };
+"ROMFAR":
+       place in [from 0x000d8 to 0x07fff] {
+          block INIT_ARRAY, R_TEXTF_UNIT64KP, ro section .textf_unit64kp,
+          ro section .constf, ro section .switchf, ro };
+"ROMHUGE":
+       place in [from 0x000d8 to 0x07fff] {
+          ro section .consth, R_TEXTF, ro section .textf };
+"RAMNEAR":
+       place in [from 0xff900 to 0xffe1f] {
+          block NEAR_HEAP, block CSTACK, zi section .iar.dynexit, R_DATA,
+          rw section .data, R_BSS, rw section .bss*, rw };
+"SADDRMEM":
+       place in [from 0xffe20 to 0xffedf] {
+          rw section .sdata, R_SDATA, rw section .sbss*, R_SBSS,
+          rw section .wrkseg };
+reserve region "OCD ROM area" = [from 0x07e00 to 0x07fff];
+do not initialize { section *.noinit };
+
+  Section           Kind     Address   Size  Object
+  -------           ----     -------   ----  ------
+"A0":                                   0x2
+  .reset            const    0x00000    0x2  interrupt_vector.o [4]
+                           - 0x00002    0x2
+
+"A1":                                  0x7c
+  .intvec           const    0x00004   0x7c  interrupt_vector.o [4]
+                           - 0x00080   0x7c
+
+"A2":                                   0x4
+  OPT_BYTE                   0x000c0    0x4  <Block>
+    OPTBYTE         const    0x000c0    0x1  r_main.o [1]
+    OPTBYTE         const    0x000c1    0x1  r_main.o [1]
+    OPTBYTE         const    0x000c2    0x1  r_main.o [1]
+    OPTBYTE         const    0x000c3    0x1  r_main.o [1]
+                           - 0x000c4    0x4
+
+"A3":                                   0xa
+  SECUR_ID                   0x000c4    0xa  <Block>
+    SECUID          const    0x000c4    0xa  r_main.o [1]
+                           - 0x000ce    0xa
+
+"ROMNEAR":                            0x54b
+  .text             ro code  0x000d8  0x16d  r_cg_timer.o [1]
+  .text             ro code  0x00245  0x122  r_cg_intc_user.o [1]
+  .text             ro code  0x00367  0x112  r_main.o [1]
+  .text             ro code  0x00479   0x7d  r_cg_lcd.o [1]
+  .text             ro code  0x004f6   0x4c  r_cg_intc.o [1]
+  .text             ro code  0x00542   0x36  cstartup.o [4]
+  .text             ro code  0x00578   0x26  r_systeminit.o [1]
+  .text             ro code  0x0059e   0x22  r_cg_timer_user.o [1]
+  .text             ro code  0x005c0   0x1a  r_cg_port.o [1]
+  .text             ro code  0x005da   0x17  r_cg_cgc.o [1]
+  .text             ro code  0x005f1   0x10  r_cg_wdt.o [1]
+  .text             ro code  0x00601    0xf  __dbg_xxexit.o [3]
+  .text             ro code  0x00610    0x5  cexit.o [4]
+  .text             ro code  0x00615    0x4  exit.o [4]
+  .text             ro code  0x00619    0x3  r_cg_cgc_user.o [1]
+  .text             ro code  0x0061c    0x3  __dbg_break.o [3]
+  .text             ro code  0x0061f    0x2  r_cg_wdt_user.o [1]
+  .text             ro code  0x00621    0x2  default_handler.o [4]
+                           - 0x00623  0x54b
+
+"ROMFAR":                               0xc
+  .iar.init_table   const    0x00624    0xc  - Linker created -
+  INIT_ARRAY                 0x00630    0x0  <Block>
+    .preinit_array  ro code  0x00630    0x0  cstartup.o [4]
+    .init_array     ro code  0x00630    0x0  cstartup.o [4]
+                           - 0x00630    0xc
+
+"ROMHUGE":                             0xad
+  .textf            ro code  0x00630   0x6b  huge_zero_init.o [4]
+  .textf            ro code  0x0069b   0x42  data_init.o [4]
+                           - 0x006dd   0xad
+
+Absolute sections, part 1 of 35:        0x1
+  .bss.noinit       uninit   0xf0031    0x1  r_cg_lcd.o [1]
+                           - 0xf0032    0x1
+
+Absolute sections, part 2 of 35:        0x1
+  .bss.noinit       uninit   0xf0035    0x1  r_cg_lcd.o [1]
+                           - 0xf0036    0x1
+
+Absolute sections, part 3 of 35:        0x1
+  .bss.noinit       uninit   0xf0037    0x1  r_cg_lcd.o [1]
+                           - 0xf0038    0x1
+
+Absolute sections, part 4 of 35:        0x1
+  .bss.noinit       uninit   0xf0041    0x1  r_cg_lcd.o [1]
+                           - 0xf0042    0x1
+
+Absolute sections, part 5 of 35:        0x1
+  .bss.noinit       uninit   0xf0051    0x1  r_cg_lcd.o [1]
+                           - 0xf0052    0x1
+
+Absolute sections, part 6 of 35:        0x1
+  .bss.noinit       uninit   0xf006e    0x1  r_cg_port.o [1]
+                           - 0xf006f    0x1
+
+Absolute sections, part 7 of 35:        0x2
+  .bss.noinit       uninit   0xf0077    0x1  r_systeminit.o [1]
+  .bss.noinit       uninit   0xf0078    0x1  r_systeminit.o [1]
+                           - 0xf0079    0x2
+
+Absolute sections, part 8 of 35:        0x1
+  .bss.noinit       uninit   0xf00f0    0x1  r_cg_timer.o [1]
+                           - 0xf00f1    0x1
+
+Absolute sections, part 9 of 35:        0x1
+  .bss.noinit       uninit   0xf00f3    0x1  r_cg_cgc.o [1]
+                           - 0xf00f4    0x1
+
+Absolute sections, part 10 of 35:       0x8
+  .bss.noinit       uninit   0xf0190    0x2  r_cg_timer.o [1]
+  .bss.noinit       uninit   0xf0192    0x2  r_cg_timer.o [1]
+  .bss.noinit       uninit   0xf0194    0x2  r_cg_timer.o [1]
+  .bss.noinit       uninit   0xf0196    0x2  r_cg_timer.o [1]
+                           - 0xf0198    0x8
+
+Absolute sections, part 11 of 35:       0xe
+  .bss.noinit       uninit   0xf01b2    0x2  r_cg_timer.o [1]
+  .bss.noinit       uninit   0xf01b4    0x2  r_cg_timer.o [1]
+  .bss.noinit       uninit   0xf01b6    0x2  r_cg_timer.o [1]
+  .bss.noinit       uninit   0xf01b8    0x2  r_cg_timer.o [1]
+  .bss.noinit       uninit   0xf01ba    0x2  r_cg_timer.o [1]
+  .bss.noinit       uninit   0xf01bc    0x2  r_cg_timer.o [1]
+  .bss.noinit       uninit   0xf01be    0x2  r_cg_timer.o [1]
+                           - 0xf01c0    0xe
+
+Absolute sections, part 12 of 35:       0x5
+  .bss.noinit       uninit   0xf0300    0x1  r_cg_lcd.o [1]
+  .bss.noinit       uninit   0xf0301    0x1  r_cg_lcd.o [1]
+  .bss.noinit       uninit   0xf0302    0x1  r_cg_lcd.o [1]
+  .bss.noinit       uninit   0xf0303    0x1  r_cg_timer.o [1]
+  .bss.noinit       uninit   0xf0304    0x1  r_cg_port.o [1]
+                           - 0xf0305    0x5
+
+Absolute sections, part 13 of 35:       0x1
+  .bss.noinit       uninit   0xf0308    0x1  r_cg_port.o [1]
+                           - 0xf0309    0x1
+
+Absolute sections, part 14 of 35:       0x1
+  .bss.noinit       uninit   0xf0400    0x1  r_main.o [1]
+                           - 0xf0401    0x1
+
+"RAMNEAR", part 1 of 2:                0x80
+  CSTACK                     0xff900   0x80  <Block>
+    CSTACK          rw data  0xff900    0x0  cstartup.o [4]
+    CSTACK          uninit   0xff900   0x80  <Block tail>
+                           - 0xff980   0x80
+
+"RAMNEAR", part 2 of 2:                0x4b
+  .bss              zero     0xff980   0x40  r_cg_intc_user.o [1]
+  .bss              zero     0xff9c0    0x2  r_cg_intc_user.o [1]
+  .bss              zero     0xff9c2    0x2  r_cg_timer_user.o [1]
+  .bss              zero     0xff9c4    0x1  r_cg_intc_user.o [1]
+  .bss              zero     0xff9c5    0x1  r_cg_intc_user.o [1]
+  .bss              zero     0xff9c6    0x1  r_cg_intc_user.o [1]
+  .bss              zero     0xff9c7    0x1  r_cg_intc_user.o [1]
+  .bss              zero     0xff9c8    0x1  r_cg_intc_user.o [1]
+  .bss              zero     0xff9c9    0x1  r_cg_timer_user.o [1]
+  .bss              zero     0xff9ca    0x1  r_cg_timer_user.o [1]
+                           - 0xff9cb   0x4b
+
+"SADDRMEM":                             0x0
+  .wrkseg           rw data  0xffe20    0x0  cstartup.o [4]
+
+Absolute sections, part 15 of 35:       0x1
+  .sbss.noinit      uninit   0xfff01    0x1  r_cg_lcd.o [1]
+                           - 0xfff02    0x1
+
+Absolute sections, part 16 of 35:       0x1
+  .sbss.noinit      uninit   0xfff03    0x1  r_cg_intc_user.o [1]
+                           - 0xfff04    0x1
+
+Absolute sections, part 17 of 35:       0x1
+  .sbss.noinit      uninit   0xfff05    0x1  r_cg_lcd.o [1]
+                           - 0xfff06    0x1
+
+Absolute sections, part 18 of 35:       0x1
+  .sbss.noinit      uninit   0xfff07    0x1  r_cg_lcd.o [1]
+                           - 0xfff08    0x1
+
+Absolute sections, part 19 of 35:       0x3
+  .sbss.noinit      uninit   0xfff0c    0x1  r_cg_port.o [1]
+  .sbss.noinit      uninit   0xfff0d    0x1  r_cg_port.o [1]
+  .sbss.noinit      uninit   0xfff0e    0x1  r_cg_timer.o [1]
+                           - 0xfff0f    0x3
+
+Absolute sections, part 20 of 35:       0x4
+  .sbss.noinit      uninit   0xfff18    0x2  r_cg_timer.o [1]
+  .sbss.noinit      uninit   0xfff1a    0x2  r_cg_timer.o [1]
+                           - 0xfff1c    0x4
+
+Absolute sections, part 21 of 35:       0x1
+  .bss.noinit       uninit   0xfff21    0x1  r_cg_lcd.o [1]
+                           - 0xfff22    0x1
+
+Absolute sections, part 22 of 35:       0x1
+  .bss.noinit       uninit   0xfff23    0x1  r_cg_intc.o [1]
+                           - 0xfff24    0x1
+
+Absolute sections, part 23 of 35:       0x1
+  .bss.noinit       uninit   0xfff25    0x1  r_cg_lcd.o [1]
+                           - 0xfff26    0x1
+
+Absolute sections, part 24 of 35:       0x1
+  .bss.noinit       uninit   0xfff27    0x1  r_cg_lcd.o [1]
+                           - 0xfff28    0x1
+
+Absolute sections, part 25 of 35:       0x1
+  .bss.noinit       uninit   0xfff2c    0x1  r_cg_port.o [1]
+                           - 0xfff2d    0x1
+
+Absolute sections, part 26 of 35:       0x1
+  .bss.noinit       uninit   0xfff2e    0x1  r_cg_timer.o [1]
+                           - 0xfff2f    0x1
+
+Absolute sections, part 27 of 35:       0x2
+  .bss.noinit       uninit   0xfff38    0x1  r_cg_intc.o [1]
+  .bss.noinit       uninit   0xfff39    0x1  r_cg_intc.o [1]
+                           - 0xfff3a    0x2
+
+Absolute sections, part 28 of 35:       0x3
+  .bss.noinit       uninit   0xfff40    0x1  r_cg_lcd.o [1]
+  .bss.noinit       uninit   0xfff41    0x1  r_cg_lcd.o [1]
+  .bss.noinit       uninit   0xfff42    0x1  r_cg_lcd.o [1]
+                           - 0xfff43    0x3
+
+Absolute sections, part 29 of 35:       0x4
+  .bss.noinit       uninit   0xfff64    0x2  r_cg_timer.o [1]
+  .bss.noinit       uninit   0xfff66    0x2  r_main.o [1]
+                           - 0xfff68    0x4
+
+Absolute sections, part 30 of 35:       0x2
+  .bss.noinit       uninit   0xfffa0    0x1  r_cg_cgc.o [1]
+  .bss.noinit       uninit   0xfffa1    0x1  r_cg_cgc.o [1]
+                           - 0xfffa2    0x2
+
+Absolute sections, part 31 of 35:       0x1
+  .bss.noinit       uninit   0xfffa4    0x1  r_cg_cgc.o [1]
+                           - 0xfffa5    0x1
+
+Absolute sections, part 32 of 35:       0x1
+  .bss.noinit       uninit   0xfffa8    0x1  r_cg_cgc_user.o [1]
+                           - 0xfffa9    0x1
+
+Absolute sections, part 33 of 35:       0x2
+  .bss.noinit       uninit   0xfffd0    0x2  r_cg_intc.o [1]
+                           - 0xfffd2    0x2
+
+Absolute sections, part 34 of 35:       0x2
+  .bss.noinit       uninit   0xfffd4    0x2  r_cg_intc.o [1]
+                           - 0xfffd6    0x2
+
+Absolute sections, part 35 of 35:      0x10
+  .bss.noinit       uninit   0xfffe0    0x2  r_cg_wdt.o [1]
+  .bss.noinit       uninit   0xfffe2    0x2  r_cg_timer.o [1]
+  .bss.noinit       uninit   0xfffe4    0x2  r_cg_wdt.o [1]
+  .bss.noinit       uninit   0xfffe6    0x2  r_cg_timer.o [1]
+  .bss.noinit       uninit   0xfffe8    0x2  r_cg_wdt.o [1]
+  .bss.noinit       uninit   0xfffea    0x2  r_cg_timer.o [1]
+  .bss.noinit       uninit   0xfffec    0x2  r_cg_wdt.o [1]
+  .bss.noinit       uninit   0xfffee    0x2  r_cg_timer.o [1]
+                           - 0xffff0   0x10
+
+
+*******************************************************************************
+*** INIT TABLE
+***
+
+          Address  Size
+          -------  ----
+Zero (___iar_zero_init2)
+    1 destination range, total size 0x4b:
+          0xff980  0x4b
+
+
+
+*******************************************************************************
+*** MODULE SUMMARY
+***
+
+    Module              ro code  ro data  rw data  rw data
+                                                    (abs)
+    ------              -------  -------  -------  -------
+E:\Water meter\project0523\Debug\Obj: [1]
+    r_cg_cgc.o               23                          4
+    r_cg_cgc_user.o           3                          1
+    r_cg_intc.o              76                          7
+    r_cg_intc_user.o        290                71        1
+    r_cg_lcd.o              125                         17
+    r_cg_port.o              26                          6
+    r_cg_timer.o            365                         40
+    r_cg_timer_user.o        34                 4
+    r_cg_wdt.o               16                          8
+    r_cg_wdt_user.o           2
+    r_main.o                274       14                 3
+    r_systeminit.o           38                          2
+    ------------------------------------------------------
+    Total:                1 272       14       75       89
+
+command line: [2]
+    ------------------------------------------------------
+    Total:
+
+dbgrl78nnf22nd.a: [3]
+    __dbg_break.o             3
+    __dbg_xxexit.o           15
+    ------------------------------------------------------
+    Total:                   18
+
+dlrl78nnf22n.a: [4]
+    cexit.o                   5
+    cstartup.o               54
+    data_init.o              66
+    default_handler.o         2
+    exit.o                    4
+    huge_zero_init.o        107
+    interrupt_vector.o               126
+    ------------------------------------------------------
+    Total:                  238      126
+
+    Linker created                    12      128
+----------------------------------------------------------
+    Grand Total:          1 528      152      203       89
+
+
+*******************************************************************************
+*** ENTRY LIST
+***
+
+Entry                      Address   Size  Type      Object
+-----                      -------   ----  ----      ------
+.iar.init_table$$Base      0x00624          --   Gb  - Linker created -
+.iar.init_table$$Limit     0x00630          --   Gb  - Linker created -
+@cend                      0x00578         Code  Gb  cstartup.o [4]
+@cstart                    0x00542         Code  Gb  cstartup.o [4]
+CSTACK$$Base               0xff900          --   Gb  - Linker created -
+CSTACK$$Limit              0xff980          --   Gb  - Linker created -
+INIT_ARRAY$$Base           0x00630          --   Gb  - Linker created -
+INIT_ARRAY$$Limit          0x00630          --   Gb  - Linker created -
+OPT_BYTE$$Base             0x000c0          --   Gb  - Linker created -
+OPT_BYTE$$Limit            0x000c4          --   Gb  - Linker created -
+Region$$Table$$Base        0x00624          --   Gb  - Linker created -
+Region$$Table$$Limit       0x00630          --   Gb  - Linker created -
+SECUR_ID$$Base             0x000c4          --   Gb  - Linker created -
+SECUR_ID$$Limit            0x000ce          --   Gb  - Linker created -
+_Carrier_Off               0x003bf    0x4  Code  Gb  r_main.o [1]
+_Carrier_On                0x003bb    0x4  Code  Gb  r_main.o [1]
+_NEAR_CONST_LOCATION {Abs}
+                        0x00000000         Data  Gb  command line/config [2]
+_R_CGC_Create              0x005da   0x17  Code  Gb  r_cg_cgc.o [1]
+_R_CGC_Get_ResetSource     0x00619    0x3  Code  Gb  r_cg_cgc_user.o [1]
+_R_INTC4_Start             0x0053b    0x7  Code  Gb  r_cg_intc.o [1]
+_R_INTC_Create             0x004f6   0x45  Code  Gb  r_cg_intc.o [1]
+_R_LCD_Create              0x00479   0x75  Code  Gb  r_cg_lcd.o [1]
+_R_LCD_Set_VoltageOn       0x004f2    0x4  Code  Gb  r_cg_lcd.o [1]
+_R_LCD_Start               0x004ee    0x4  Code  Gb  r_cg_lcd.o [1]
+_R_MAIN_UserInit           0x0039c    0x4  Code  Gb  r_main.o [1]
+_R_PORT_Create             0x005c0   0x1a  Code  Gb  r_cg_port.o [1]
+_R_Systeminit              0x00578   0x1e  Code  Gb  r_systeminit.o [1]
+_R_TAU0_Channel0_Start     0x001f3   0x11  Code  Gb  r_cg_timer.o [1]
+_R_TAU0_Channel0_Stop      0x00204   0x11  Code  Gb  r_cg_timer.o [1]
+_R_TAU0_Channel1_Start     0x00215    0xc  Code  Gb  r_cg_timer.o [1]
+_R_TAU0_Channel2_Start     0x00221    0xc  Code  Gb  r_cg_timer.o [1]
+_R_TAU0_Channel2_Stop      0x0022d    0xc  Code  Gb  r_cg_timer.o [1]
+_R_TAU0_Channel3_Stop      0x00239    0xc  Code  Gb  r_cg_timer.o [1]
+_R_TAU0_Create             0x000d8  0x11b  Code  Gb  r_cg_timer.o [1]
+_R_WDT_Create              0x005f1   0x10  Code  Gb  r_cg_wdt.o [1]
+_Read_0_Page_block         0x00468   0x11  Code  Gb  r_main.o [1]
+_SendAddress               0x00434   0x34  Code  Gb  r_main.o [1]
+_SendLock                  0x0041e   0x16  Code  Gb  r_main.o [1]
+_SendOpcode                0x003e7   0x37  Code  Gb  r_main.o [1]
+_Start_Gap                 0x003c3    0x9  Code  Gb  r_main.o [1]
+_TR3                       0xff9ca    0x1  Data  Gb  r_cg_timer_user.o [1]
+_Test_H                    0x00262    0x4  Code  Gb  r_cg_intc_user.o [1]
+_Test_L                    0x00266    0x4  Code  Gb  r_cg_intc_user.o [1]
+_Write_Data0               0x003d5    0x9  Code  Gb  r_main.o [1]
+_Write_Data1               0x003de    0x9  Code  Gb  r_main.o [1]
+_Write_Gap                 0x003cc    0x9  Code  Gb  r_main.o [1]
+__A_CKC                    0xfffa4    0x1  Data  Gb  r_cg_cgc.o [1]
+__A_CMC                    0xfffa0    0x1  Data  Gb  r_cg_cgc.o [1]
+__A_CSC                    0xfffa1    0x1  Data  Gb  r_cg_cgc.o [1]
+__A_EGN0                   0xfff39    0x1  Data  Gb  r_cg_intc.o [1]
+__A_EGP0                   0xfff38    0x1  Data  Gb  r_cg_intc.o [1]
+__A_IAWCTL                 0xf0078    0x1  Data  Gb  r_systeminit.o [1]
+__A_IF0                    0xfffe0    0x2  Data  Gb  r_cg_wdt.o [1]
+__A_IF1                    0xfffe2    0x2  Data  Gb  r_cg_timer.o [1]
+__A_IF2                    0xfffd0    0x2  Data  Gb  r_cg_intc.o [1]
+__A_ISCLCD                 0xf0308    0x1  Data  Gb  r_cg_port.o [1]
+__A_LCDC0                  0xfff42    0x1  Data  Gb  r_cg_lcd.o [1]
+__A_LCDM0                  0xfff40    0x1  Data  Gb  r_cg_lcd.o [1]
+__A_LCDM1                  0xfff41    0x1  Data  Gb  r_cg_lcd.o [1]
+__A_MK0                    0xfffe4    0x2  Data  Gb  r_cg_wdt.o [1]
+__A_MK1                    0xfffe6    0x2  Data  Gb  r_cg_timer.o [1]
+__A_MK2                    0xfffd4    0x2  Data  Gb  r_cg_intc.o [1]
+__A_OSMC                   0xf00f3    0x1  Data  Gb  r_cg_cgc.o [1]
+__A_P1                     0xfff01    0x1  Data  Gb  r_cg_lcd.o [1]
+__A_P12                    0xfff0c    0x1  Data  Gb  r_cg_port.o [1]
+__A_P13                    0xfff0d    0x1  Data  Gb  r_cg_port.o [1]
+__A_P14                    0xfff0e    0x1  Data  Gb  r_cg_timer.o [1]
+__A_P3                     0xfff03    0x1  Data  Gb  r_cg_intc_user.o [1]
+__A_P5                     0xfff05    0x1  Data  Gb  r_cg_lcd.o [1]
+__A_P7                     0xfff07    0x1  Data  Gb  r_cg_lcd.o [1]
+__A_PER0                   0xf00f0    0x1  Data  Gb  r_cg_timer.o [1]
+__A_PFSEG0                 0xf0300    0x1  Data  Gb  r_cg_lcd.o [1]
+__A_PFSEG1                 0xf0301    0x1  Data  Gb  r_cg_lcd.o [1]
+__A_PFSEG2                 0xf0302    0x1  Data  Gb  r_cg_lcd.o [1]
+__A_PFSEG3                 0xf0303    0x1  Data  Gb  r_cg_timer.o [1]
+__A_PFSEG4                 0xf0304    0x1  Data  Gb  r_cg_port.o [1]
+__A_PIM1                   0xf0041    0x1  Data  Gb  r_cg_lcd.o [1]
+__A_PIOR                   0xf0077    0x1  Data  Gb  r_systeminit.o [1]
+__A_PM1                    0xfff21    0x1  Data  Gb  r_cg_lcd.o [1]
+__A_PM12                   0xfff2c    0x1  Data  Gb  r_cg_port.o [1]
+__A_PM14                   0xfff2e    0x1  Data  Gb  r_cg_timer.o [1]
+__A_PM3                    0xfff23    0x1  Data  Gb  r_cg_intc.o [1]
+__A_PM5                    0xfff25    0x1  Data  Gb  r_cg_lcd.o [1]
+__A_PM7                    0xfff27    0x1  Data  Gb  r_cg_lcd.o [1]
+__A_PMC14                  0xf006e    0x1  Data  Gb  r_cg_port.o [1]
+__A_POM1                   0xf0051    0x1  Data  Gb  r_cg_lcd.o [1]
+__A_PR00                   0xfffe8    0x2  Data  Gb  r_cg_wdt.o [1]
+__A_PR01                   0xfffea    0x2  Data  Gb  r_cg_timer.o [1]
+__A_PR10                   0xfffec    0x2  Data  Gb  r_cg_wdt.o [1]
+__A_PR11                   0xfffee    0x2  Data  Gb  r_cg_timer.o [1]
+__A_PU1                    0xf0031    0x1  Data  Gb  r_cg_lcd.o [1]
+__A_PU5                    0xf0035    0x1  Data  Gb  r_cg_lcd.o [1]
+__A_PU7                    0xf0037    0x1  Data  Gb  r_cg_lcd.o [1]
+__A_RESF                   0xfffa8    0x1  Data  Gb  r_cg_cgc_user.o [1]
+__A_SEG0                   0xf0400    0x1  Data  Gb  r_main.o [1]
+__A_TDR00                  0xfff18    0x2  Data  Gb  r_cg_timer.o [1]
+__A_TDR01                  0xfff1a    0x2  Data  Gb  r_cg_timer.o [1]
+__A_TDR02                  0xfff64    0x2  Data  Gb  r_cg_timer.o [1]
+__A_TDR03                  0xfff66    0x2  Data  Gb  r_main.o [1]
+__A_TMR00                  0xf0190    0x2  Data  Gb  r_cg_timer.o [1]
+__A_TMR01                  0xf0192    0x2  Data  Gb  r_cg_timer.o [1]
+__A_TMR02                  0xf0194    0x2  Data  Gb  r_cg_timer.o [1]
+__A_TMR03                  0xf0196    0x2  Data  Gb  r_cg_timer.o [1]
+__A_TO0                    0xf01b8    0x2  Data  Gb  r_cg_timer.o [1]
+__A_TOE0                   0xf01ba    0x2  Data  Gb  r_cg_timer.o [1]
+__A_TOL0                   0xf01bc    0x2  Data  Gb  r_cg_timer.o [1]
+__A_TOM0                   0xf01be    0x2  Data  Gb  r_cg_timer.o [1]
+__A_TPS0                   0xf01b6    0x2  Data  Gb  r_cg_timer.o [1]
+__A_TS0                    0xf01b2    0x2  Data  Gb  r_cg_timer.o [1]
+__A_TT0                    0xf01b4    0x2  Data  Gb  r_cg_timer.o [1]
+___DebugBreak              0x0061c    0x3  Code  Gb  __dbg_break.o [3]
+___exit                    0x00601    0xf  Code  Gb  __dbg_xxexit.o [3]
+___iar_data_init2          0x0069b   0x42  Code  Gb  data_init.o [4]
+___iar_default_interrupt_handler
+                           0x00621    0x2  Code  Lc  default_handler.o [4]
+___iar_zero_init2          0x00630   0x6b  Code  Gb  huge_zero_init.o [4]
+___interrupt_0x00          0x00542         Code  Gb  cstartup.o [4]
+___interrupt_0x04          0x0061f         Code  Gb  r_cg_wdt_user.o [1]
+___interrupt_0x06          0x00621    0x2  Code  Wk  default_handler.o [4]
+___interrupt_0x08          0x00621    0x2  Code  Wk  default_handler.o [4]
+___interrupt_0x0A          0x00621    0x2  Code  Wk  default_handler.o [4]
+___interrupt_0x0C          0x00621    0x2  Code  Wk  default_handler.o [4]
+___interrupt_0x0E          0x00621    0x2  Code  Wk  default_handler.o [4]
+___interrupt_0x10          0x00245         Code  Gb  r_cg_intc_user.o [1]
+___interrupt_0x12          0x00621    0x2  Code  Wk  default_handler.o [4]
+___interrupt_0x14          0x00621    0x2  Code  Wk  default_handler.o [4]
+___interrupt_0x16          0x00621    0x2  Code  Wk  default_handler.o [4]
+___interrupt_0x18          0x00621    0x2  Code  Wk  default_handler.o [4]
+___interrupt_0x1A          0x00621    0x2  Code  Wk  default_handler.o [4]
+___interrupt_0x1C          0x00621    0x2  Code  Wk  default_handler.o [4]
+___interrupt_0x1E          0x00621    0x2  Code  Wk  default_handler.o [4]
+___interrupt_0x20          0x0059e         Code  Gb  r_cg_timer_user.o [1]
+___interrupt_0x22          0x00621    0x2  Code  Wk  default_handler.o [4]
+___interrupt_0x24          0x00621    0x2  Code  Wk  default_handler.o [4]
+___interrupt_0x26          0x00621    0x2  Code  Wk  default_handler.o [4]
+___interrupt_0x28          0x005a0         Code  Gb  r_cg_timer_user.o [1]
+___interrupt_0x2A          0x005a5         Code  Gb  r_cg_timer_user.o [1]
+___interrupt_0x2C          0x005aa         Code  Gb  r_cg_timer_user.o [1]
+___interrupt_0x2E          0x00621    0x2  Code  Wk  default_handler.o [4]
+___interrupt_0x30          0x00621    0x2  Code  Wk  default_handler.o [4]
+___interrupt_0x32          0x00621    0x2  Code  Wk  default_handler.o [4]
+___interrupt_0x34          0x00621    0x2  Code  Wk  default_handler.o [4]
+___interrupt_0x36          0x00621    0x2  Code  Wk  default_handler.o [4]
+___interrupt_0x38          0x00621    0x2  Code  Wk  default_handler.o [4]
+___interrupt_0x3A          0x00621    0x2  Code  Wk  default_handler.o [4]
+___interrupt_0x3C          0x00621    0x2  Code  Wk  default_handler.o [4]
+___interrupt_0x3E          0x00621    0x2  Code  Wk  default_handler.o [4]
+___interrupt_0x40          0x00621    0x2  Code  Wk  default_handler.o [4]
+___interrupt_0x42          0x00621    0x2  Code  Wk  default_handler.o [4]
+___interrupt_0x44          0x00621    0x2  Code  Wk  default_handler.o [4]
+___interrupt_0x46          0x00621    0x2  Code  Wk  default_handler.o [4]
+___interrupt_0x48          0x00621    0x2  Code  Wk  default_handler.o [4]
+___interrupt_0x4A          0x00621    0x2  Code  Wk  default_handler.o [4]
+___interrupt_0x4C          0x00621    0x2  Code  Wk  default_handler.o [4]
+___interrupt_0x4E          0x00621    0x2  Code  Wk  default_handler.o [4]
+___interrupt_0x50          0x00621    0x2  Code  Wk  default_handler.o [4]
+___interrupt_0x52          0x00621    0x2  Code  Wk  default_handler.o [4]
+___interrupt_0x54          0x00621    0x2  Code  Wk  default_handler.o [4]
+___interrupt_0x56          0x00621    0x2  Code  Wk  default_handler.o [4]
+___interrupt_0x58          0x00621    0x2  Code  Wk  default_handler.o [4]
+___interrupt_0x5A          0x00621    0x2  Code  Wk  default_handler.o [4]
+___interrupt_0x5C          0x00621    0x2  Code  Wk  default_handler.o [4]
+___interrupt_0x5E          0x00621    0x2  Code  Wk  default_handler.o [4]
+___interrupt_0x60          0x00621    0x2  Code  Wk  default_handler.o [4]
+___interrupt_0x62          0x00621    0x2  Code  Wk  default_handler.o [4]
+___interrupt_0x64          0x00621    0x2  Code  Wk  default_handler.o [4]
+___interrupt_0x66          0x00621    0x2  Code  Wk  default_handler.o [4]
+___interrupt_0x68          0x00621    0x2  Code  Wk  default_handler.o [4]
+___interrupt_0x6A          0x00621    0x2  Code  Wk  default_handler.o [4]
+___interrupt_0x6C          0x00621    0x2  Code  Wk  default_handler.o [4]
+___interrupt_0x6E          0x00621    0x2  Code  Wk  default_handler.o [4]
+___interrupt_0x70          0x00621    0x2  Code  Wk  default_handler.o [4]
+___interrupt_0x72          0x00621    0x2  Code  Wk  default_handler.o [4]
+___interrupt_0x74          0x00621    0x2  Code  Wk  default_handler.o [4]
+___interrupt_0x76          0x00621    0x2  Code  Wk  default_handler.o [4]
+___interrupt_0x78          0x00621    0x2  Code  Wk  default_handler.o [4]
+___interrupt_0x7A          0x00621    0x2  Code  Wk  default_handler.o [4]
+___interrupt_0x7C          0x00621    0x2  Code  Wk  default_handler.o [4]
+___interrupt_0x7E          0x00621    0x2  Code  Wk  default_handler.o [4]
+___interrupt_tab_0x00      0x00000         Data  Gb  interrupt_vector.o [4]
+___interrupt_tab_0x04      0x00004         Data  Gb  interrupt_vector.o [4]
+___interrupt_tab_0x06      0x00006         Data  Gb  interrupt_vector.o [4]
+___interrupt_tab_0x08      0x00008         Data  Gb  interrupt_vector.o [4]
+___interrupt_tab_0x0A      0x0000a         Data  Gb  interrupt_vector.o [4]
+___interrupt_tab_0x0C      0x0000c         Data  Gb  interrupt_vector.o [4]
+___interrupt_tab_0x0E      0x0000e         Data  Gb  interrupt_vector.o [4]
+___interrupt_tab_0x10      0x00010         Data  Gb  interrupt_vector.o [4]
+___interrupt_tab_0x12      0x00012         Data  Gb  interrupt_vector.o [4]
+___interrupt_tab_0x14      0x00014         Data  Gb  interrupt_vector.o [4]
+___interrupt_tab_0x16      0x00016         Data  Gb  interrupt_vector.o [4]
+___interrupt_tab_0x18      0x00018         Data  Gb  interrupt_vector.o [4]
+___interrupt_tab_0x1A      0x0001a         Data  Gb  interrupt_vector.o [4]
+___interrupt_tab_0x1C      0x0001c         Data  Gb  interrupt_vector.o [4]
+___interrupt_tab_0x1E      0x0001e         Data  Gb  interrupt_vector.o [4]
+___interrupt_tab_0x20      0x00020         Data  Gb  interrupt_vector.o [4]
+___interrupt_tab_0x22      0x00022         Data  Gb  interrupt_vector.o [4]
+___interrupt_tab_0x24      0x00024         Data  Gb  interrupt_vector.o [4]
+___interrupt_tab_0x26      0x00026         Data  Gb  interrupt_vector.o [4]
+___interrupt_tab_0x28      0x00028         Data  Gb  interrupt_vector.o [4]
+___interrupt_tab_0x2A      0x0002a         Data  Gb  interrupt_vector.o [4]
+___interrupt_tab_0x2C      0x0002c         Data  Gb  interrupt_vector.o [4]
+___interrupt_tab_0x2E      0x0002e         Data  Gb  interrupt_vector.o [4]
+___interrupt_tab_0x30      0x00030         Data  Gb  interrupt_vector.o [4]
+___interrupt_tab_0x32      0x00032         Data  Gb  interrupt_vector.o [4]
+___interrupt_tab_0x34      0x00034         Data  Gb  interrupt_vector.o [4]
+___interrupt_tab_0x36      0x00036         Data  Gb  interrupt_vector.o [4]
+___interrupt_tab_0x38      0x00038         Data  Gb  interrupt_vector.o [4]
+___interrupt_tab_0x3A      0x0003a         Data  Gb  interrupt_vector.o [4]
+___interrupt_tab_0x3C      0x0003c         Data  Gb  interrupt_vector.o [4]
+___interrupt_tab_0x3E      0x0003e         Data  Gb  interrupt_vector.o [4]
+___interrupt_tab_0x40      0x00040         Data  Gb  interrupt_vector.o [4]
+___interrupt_tab_0x42      0x00042         Data  Gb  interrupt_vector.o [4]
+___interrupt_tab_0x44      0x00044         Data  Gb  interrupt_vector.o [4]
+___interrupt_tab_0x46      0x00046         Data  Gb  interrupt_vector.o [4]
+___interrupt_tab_0x48      0x00048         Data  Gb  interrupt_vector.o [4]
+___interrupt_tab_0x4A      0x0004a         Data  Gb  interrupt_vector.o [4]
+___interrupt_tab_0x4C      0x0004c         Data  Gb  interrupt_vector.o [4]
+___interrupt_tab_0x4E      0x0004e         Data  Gb  interrupt_vector.o [4]
+___interrupt_tab_0x50      0x00050         Data  Gb  interrupt_vector.o [4]
+___interrupt_tab_0x52      0x00052         Data  Gb  interrupt_vector.o [4]
+___interrupt_tab_0x54      0x00054         Data  Gb  interrupt_vector.o [4]
+___interrupt_tab_0x56      0x00056         Data  Gb  interrupt_vector.o [4]
+___interrupt_tab_0x58      0x00058         Data  Gb  interrupt_vector.o [4]
+___interrupt_tab_0x5A      0x0005a         Data  Gb  interrupt_vector.o [4]
+___interrupt_tab_0x5C      0x0005c         Data  Gb  interrupt_vector.o [4]
+___interrupt_tab_0x5E      0x0005e         Data  Gb  interrupt_vector.o [4]
+___interrupt_tab_0x60      0x00060         Data  Gb  interrupt_vector.o [4]
+___interrupt_tab_0x62      0x00062         Data  Gb  interrupt_vector.o [4]
+___interrupt_tab_0x64      0x00064         Data  Gb  interrupt_vector.o [4]
+___interrupt_tab_0x66      0x00066         Data  Gb  interrupt_vector.o [4]
+___interrupt_tab_0x68      0x00068         Data  Gb  interrupt_vector.o [4]
+___interrupt_tab_0x6A      0x0006a         Data  Gb  interrupt_vector.o [4]
+___interrupt_tab_0x6C      0x0006c         Data  Gb  interrupt_vector.o [4]
+___interrupt_tab_0x6E      0x0006e         Data  Gb  interrupt_vector.o [4]
+___interrupt_tab_0x70      0x00070         Data  Gb  interrupt_vector.o [4]
+___interrupt_tab_0x72      0x00072         Data  Gb  interrupt_vector.o [4]
+___interrupt_tab_0x74      0x00074         Data  Gb  interrupt_vector.o [4]
+___interrupt_tab_0x76      0x00076         Data  Gb  interrupt_vector.o [4]
+___interrupt_tab_0x78      0x00078         Data  Gb  interrupt_vector.o [4]
+___interrupt_tab_0x7A      0x0007a         Data  Gb  interrupt_vector.o [4]
+___interrupt_tab_0x7C      0x0007c         Data  Gb  interrupt_vector.o [4]
+___interrupt_tab_0x7E      0x0007e         Data  Gb  interrupt_vector.o [4]
+___low_level_init          0x00596    0x8  Code  Gb  r_systeminit.o [1]
+__exit                     0x00610         Code  Gb  cexit.o [4]
+__iar_exit_end             0x00615         Code  Gb  cexit.o [4]
+__iar_program_start        0x00542         Code  Gb  cstartup.o [4]
+__link_file_version_2 {Abs}
+                        0x00000001         Data  Gb  command line/config [2]
+__program_end              0x00578         Code  Gb  cstartup.o [4]
+_count_8us                 0xff9c9    0x1  Data  Gb  r_cg_timer_user.o [1]
+_count_pluse               0xff9c2    0x2  Data  Gb  r_cg_timer_user.o [1]
+_delay_8nus                0x003a0   0x1b  Code  Gb  r_main.o [1]
+_delayms                   0x00367   0x11  Code  Gb  r_main.o [1]
+_exit                      0x00615    0x4  Code  Gb  exit.o [4]
+_gData                     0xff980   0x40  Data  Gb  r_cg_intc_user.o [1]
+_gDataHalf                 0xff9c6    0x1  Data  Gb  r_cg_intc_user.o [1]
+_gDataLen                  0xff9c5    0x1  Data  Gb  r_cg_intc_user.o [1]
+_gIsHalf                   0xff9c7    0x1  Data  Gb  r_cg_intc_user.o [1]
+_gIsHead                   0xff9c8    0x1  Data  Gb  r_cg_intc_user.o [1]
+_gStart                    0xff9c4    0x1  Data  Gb  r_cg_intc_user.o [1]
+_interrupt_vector_table
+                           0x00000         Data  Gb  interrupt_vector.o [4]
+_main                      0x00378   0x24  Code  Gb  r_main.o [1]
+_manchest                  0x0026a   0xfd  Code  Gb  r_cg_intc_user.o [1]
+_opbyte0                   0x000c0    0x1  Data  Gb  r_main.o [1]
+_opbyte1                   0x000c1    0x1  Data  Gb  r_main.o [1]
+_opbyte2                   0x000c2    0x1  Data  Gb  r_main.o [1]
+_opbyte3                   0x000c3    0x1  Data  Gb  r_main.o [1]
+_r_intc4_interrupt         0x00245   0x1d  Code  Lc  r_cg_intc_user.o [1]
+_r_tau0_channel0_interrupt
+                           0x0059e    0x2  Code  Lc  r_cg_timer_user.o [1]
+_r_tau0_channel1_interrupt
+                           0x005a0    0x5  Code  Lc  r_cg_timer_user.o [1]
+_r_tau0_channel2_interrupt
+                           0x005a5    0x5  Code  Lc  r_cg_timer_user.o [1]
+_r_tau0_channel3_interrupt
+                           0x005aa   0x16  Code  Lc  r_cg_timer_user.o [1]
+_r_wdt_interrupt           0x0061f    0x2  Code  Lc  r_cg_wdt_user.o [1]
+_secuid                    0x000c4    0xa  Data  Gb  r_main.o [1]
+_temp_count                0xff9c0    0x2  Data  Gb  r_cg_intc_user.o [1]
+
+
+[1] = E:\Water meter\project0523\Debug\Obj
+[2] = command line
+[3] = dbgrl78nnf22nd.a
+[4] = dlrl78nnf22n.a
+
+  1 528 bytes of readonly  code memory
+    152 bytes of readonly  data memory
+    203 bytes of readwrite data memory (+ 89 absolute)
+
+Errors: none
+Warnings: none
